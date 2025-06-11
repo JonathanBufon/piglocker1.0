@@ -1,0 +1,517 @@
+/* Reset Básico e Configurações Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    color: #333;
+    background-color: #f0f2f5;
+    line-height: 1.6;
+}
+
+/* Tela de Login */
+#login-screen {
+    background-color: #3a3a6b;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.login-container {
+    background-color: #ffffff; 
+    padding: 40px;
+    border-radius: 8px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: auto;
+}
+
+.login-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #1c1e21;
+}
+
+.login-container p {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #606770;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.input-group .link {
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #3a3a6b;
+    text-decoration: none;
+}
+.input-group .link:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilos Gerais de Botões */
+.btn {
+    background-color: #4a6cff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    background-color: #3b5ce6;
+}
+
+.btn .btn-icon {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.btn.btn-secondary {
+    background-color: #e4e6eb;
+    color: #333;
+}
+.btn.btn-secondary:hover {
+    background-color: #d8dade;
+}
+
+.btn.btn-outline {
+    background-color: transparent;
+    color: #4a6cff;
+    border: 1px solid #4a6cff;
+}
+.btn.btn-outline:hover {
+    background-color: #f0f4ff;
+}
+.btn.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+.btn.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+
+/* Tela Principal */
+#main-screen {
+    height: 100vh;
+    background-color: #f7f8fc;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #3a3a6b;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-header .logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 12px;
+    object-fit: contain;
+}
+
+.sidebar-header h1 {
+    font-size: 22px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+.sidebar-nav .nav-item > a { /* Estilo para o link principal do item de navegação */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Para seta no final */
+    color: #e0e0ff;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.sidebar-nav .nav-item > a .nav-icon { /* Ícones da navegação */
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0; /* Para não encolher */
+}
+.sidebar-nav .nav-item > a .arrow-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    margin-left: auto; /* Empurra a seta para a direita */
+}
+.sidebar-nav .nav-item.has-submenu.open > a .arrow-icon {
+    transform: rotate(180deg);
+}
+
+
+.sidebar-nav li a img[src*="password-white.png"],
+.sidebar-nav li a img[src*="settings.png"],
+.sidebar-nav li a img[src*="arrow-baixo.png"] {
+   filter: none; /* Assumindo que já são claros ou têm a cor correta */
+}
+
+
+.sidebar-nav .nav-item.active > a,
+.sidebar-nav .submenu li.active a {
+    background-color: #4a6cff;
+    color: #ffffff;
+}
+.sidebar-nav .nav-item > a:hover,
+.sidebar-nav .submenu li a:hover {
+    background-color: #4f4f94;
+}
+
+.sidebar-nav .submenu {
+    list-style: none;
+    padding-left: 25px; /* Indentação para subitens */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.sidebar-nav .nav-item.has-submenu.open .submenu {
+    max-height: 200px; /* Ajuste conforme a quantidade de subitens */
+}
+.sidebar-nav .submenu li a {
+    padding: 10px 15px;
+    font-size: 15px;
+    display: block; /* Submenu links ocupam toda a largura */
+    color: #d0d0ff;
+}
+
+
+.content-area {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+}
+/* Esconde todas as seções de conteúdo por padrão */
+.content-section {
+    display: none;
+}
+/* Mostra a seção ativa */
+.content-section.active-section {
+    display: block;
+}
+
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.content-header h2 { /* Usado como #content-title */
+    font-size: 28px;
+    color: #1c1e21;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative; /* Para o menu dropdown do perfil */
+}
+
+.header-actions .profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #4a6cff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Formulários (Nova, Editar, Minha Conta) */
+#form-nova-credencial-container,
+#form-editar-credencial-container,
+#secao-minha-conta { /* #secao-minha-conta herda muitos estilos de formulário */
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+#form-nova-credencial-container h3,
+#form-editar-credencial-container h3,
+#secao-minha-conta h3 { /* Título principal da seção */
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #1c1e21;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+#secao-minha-conta .section-subtitle { /* Subtítulos em Minha Conta */
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+
+#novo-form fieldset, #edit-form fieldset {
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#novo-form legend, #edit-form legend {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+}
+
+.form-group { /* Usado em todos os formulários */
+    margin-bottom: 20px;
+}
+
+.form-group label { /* Usado em todos os formulários */
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group input[type="email"] { /* Usado em todos os formulários */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+}
+.form-group input:focus {
+    border-color: #4a6cff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 108, 255, 0.2);
+}
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+
+.password-wrapper { /* Usado em todos os formulários com senha */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input {
+    padding-right: 45px;
+}
+.toggle-password { /* Usado em todos os formulários com senha */
+    position: absolute;
+    right: 1px;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-password .icon-eye {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+.btn-link { /* Usado em formulários */
+    background: none;
+    border: none;
+    color: #4a6cff;
+    cursor: pointer;
+    padding: 5px 0;
+    font-size: 14px;
+}
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.form-actions { /* Usado em todos os formulários */
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+/* Ajuste para o formulário de edição ter lixeira à esquerda */
+#edit-form .form-actions {
+    justify-content: space-between;
+}
+
+
+/* Lista de Credenciais */
+#lista-credenciais-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.table-controls {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.table-controls label {
+    margin-left: 8px;
+    font-size: 15px;
+    color: #333;
+}
+
+.table-header-custom, .table-row-custom {
+    display: grid;
+    grid-template-columns: 40px 2fr 2fr 80px;
+    padding: 12px 10px;
+    border-bottom: 1px solid #e0e0e0;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-header-custom {
+    font-weight: bold;
+    color: #333;
+    font-size: 15px;
+    background-color: #f7f8fc;
+}
+
+.table-row-custom span {
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table-row-custom input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4a6cff; /* Cor do checkbox marcado */
+}
+.table-row-custom.empty {
+    height: 48px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.table-row-custom:last-child {
+    border-bottom: none;
+}
+
+.actions-menu {
+    position: relative;
+    text-align: right;
+}
+.action-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #555;
+    padding: 5px;
+}
+.action-btn:hover {
+    color: #000;
+}
+
+/* Dropdowns (Perfil e Ações da Credencial) */
+.profile-menu, .actions-dropdown {
+    position: absolute;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100; /* Alto z-index para ficar sobre outros elementos */
+    padding: 8px 0;
+    min-width: 180px; /* Largura mínima */
+}
+.profile-menu {
+    top: calc(100% + 5px); /* Abaixo do ícone de perfil */
+    right: 0;
+}
+.actions-dropdown {
+    top: calc(100% + 5px); /* Abaixo do botão de três pontos */
+    right: 0;
+    min-width: 220px;
+}
+
+.profile-menu a, .actions-dropdown a {
+    display: flex; /* Para alinhar ícones se adicionados */
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.profile-menu a:
